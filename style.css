@@ -30,6 +30,11 @@ body {
   );
 }
 
+#starField path {
+  fill: var(--star-fill, #FFFFFF);
+  stroke: var(--star-stroke, #8A8A8A);
+}
+
 .recs-page{
     position: relative;
     overflow-x: hidden;
