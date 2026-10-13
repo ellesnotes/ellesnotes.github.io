@@ -4,12 +4,19 @@ const starPath =
 
 const isMobile = window.innerWidth < 480;
 const pairCount = isMobile ? 12 : 24;
-const edgeOffsetMin = isMobile ? 3 : 8;     // closest a star can sit to the edge (%)
+const edgeOffsetMin = isMobile ? 3 : 8; // closest a star can sit to the edge (%)
 const edgeOffsetRange = isMobile ? 20 : 28; // how far into the screen the band extends (%)
 
 const rand = (min, range) => min + Math.random() * range;
 
-function makeStar(xPercent, yPercent, size, floatDelay, twinkleDelay, minOpacity) {
+function makeStar(
+  xPercent,
+  yPercent,
+  size,
+  floatDelay,
+  twinkleDelay,
+  minOpacity,
+) {
   const floatDur = rand(3, 2.5);
   const twinkleDur = rand(1.2, 2);
 
@@ -26,7 +33,7 @@ function makeStar(xPercent, yPercent, size, floatDelay, twinkleDelay, minOpacity
 
   wrap.innerHTML = `
     <svg width="${size}" height="${size}" viewBox="0 0 24 24">
-      <path d="${starPath}" fill="#FFFFFF" stroke="#8A8A8A" stroke-width="1.2" stroke-linejoin="round"/>
+      <path d="${starPath}" stroke-width="1.2" stroke-linejoin="round"/>
     </svg>`;
   field.appendChild(wrap);
 }
@@ -42,5 +49,12 @@ for (let i = 0; i < pairCount; i++) {
   const rightXPercent = 100 - leftXPercent;
 
   makeStar(leftXPercent, yPercent, size, floatDelay, twinkleDelay, minOpacity);
-  makeStar(rightXPercent, yPercent, size, floatDelay + 0.3, twinkleDelay + 0.3, minOpacity);
+  makeStar(
+    rightXPercent,
+    yPercent,
+    size,
+    floatDelay + 0.3,
+    twinkleDelay + 0.3,
+    minOpacity,
+  );
 }
